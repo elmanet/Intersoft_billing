@@ -84,14 +84,10 @@ $rutaDestinoBD=$rutaEnServidor.'/'.$nombreImagen;
 move_uploaded_file($rutaTemporal,$rutaDestino);  
 
 
-if($_POST['des_prod1']==""){
-    $des_prod=$_POST['des_prod2'];
-}else{
-    $des_prod=$_POST['des_prod1'];
-}
+    $des_prod=$_POST['contenido'];
 
 
- $insertSQL = sprintf("INSERT INTO sis_productos(id, cod_prod, nombre_prod, id_cate, id_marca, des_prod, des_prod_corto, existencia, precio, margen, descuento, destacado, clave, ruta, status) VALUES ( %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", 
+ $insertSQL = sprintf("INSERT INTO sis_productos(id, cod_prod, nombre_prod, id_cate, id_marca, des_prod, des_prod_corto, existencia, precio, descuento, destacado, clave, ruta, status) VALUES ( %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", 
                         GetSQLValueString($_POST['id'], "int"),
                         GetSQLValueString($_POST['cod_prod'], "text"),
                         GetSQLValueString($_POST['nombre_prod'], "text"),
@@ -101,7 +97,6 @@ if($_POST['des_prod1']==""){
                         GetSQLValueString($_POST['des_prod_corto'], "text"),
                         GetSQLValueString($_POST['existencia'], "int"),
                         GetSQLValueString($_POST['precio'], "double"),
-                        GetSQLValueString($_POST['margen'], "double"),
                         GetSQLValueString($_POST['descuento'], "double"),
                         GetSQLValueString($_POST['destacado'], "int"),
                         GetSQLValueString($_POST['clave'], "text"),

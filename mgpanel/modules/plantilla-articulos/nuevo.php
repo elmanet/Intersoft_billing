@@ -39,6 +39,7 @@ $totalRows_categoria = mysql_num_rows($categoria);
     		});
 
  $("#grabar").click(function(){
+ 	$('#grabar').hide();
 
  	if (tinyMCE) tinyMCE.triggerSave(); 
 	if (myForm.contenido.value==''){
@@ -50,7 +51,7 @@ $totalRows_categoria = mysql_num_rows($categoria);
  	if($("#titulo_articulo").val().length < 3) {  
         $('#msgerror').show();
         $("#msgerror p").html("<strong>Error!</strong> El articulo debe Tener un Titulo").show();
-      
+      	$('#grabar').show();
 
         return false;  
     }  
@@ -58,6 +59,7 @@ $totalRows_categoria = mysql_num_rows($categoria);
   	if($("#contenido").val().length < 3) {  
         $('#msgerror').show();
         $("#msgerror p").html("<strong>Error!</strong> Debes agregar informacion al articulo").show();
+        $('#grabar').show();
       
 
         return false;  
@@ -208,19 +210,19 @@ $totalRows_categoria = mysql_num_rows($categoria);
 
 
 		<tr><td>&nbsp;</td></tr>
-		<tr>
-			<td colspan="2" align="center">
+			
 
-			<a href="index.php?mod=gestor-blog"  class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-remove"></i><span> Cancelar</span></a>	&nbsp;&nbsp;&nbsp;	 <input type="submit" id="grabar" class="btn btn-primary btn-lg " value="Grabar Nuevo" />
 
-			</td>
-		</tr>
  		</table>
 
     
       <input type="hidden" name="id_articulo" id="id_articulo" value="">
       <input type="hidden" name="orden" id="orden" value="1">
       <input type="hidden" name="status" id="status" value="1">
+
+      <div class="boton-modulo">
+      	<a href="index.php?mod=gestor-blog"  class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-remove"></i><span> Cancelar</span></a>	&nbsp;&nbsp;&nbsp;	 <input type="submit" id="grabar" class="btn btn-primary btn-lg " value="Grabar Nuevo" />
+      </div>
 
 		</form>  
 

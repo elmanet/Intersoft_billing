@@ -2,11 +2,14 @@
 
 require_once('../inc/conexion_modules.inc.php'); 
 
-$updateSQL = sprintf("UPDATE sis_productos_categoria SET nombre_cate=%s, des_cate=%s, catep=%s, status=%s WHERE id=%s",  
+$des_cate=$_POST['contenido'];
+
+$updateSQL = sprintf("UPDATE sis_productos_categoria SET nombre_cate=%s, des_cate=%s, catep=%s, orden=%s, status=%s WHERE id=%s",  
 					   
 					   GetSQLValueString($_POST['nombre_cate'], "text"),
-                       GetSQLValueString($_POST['des_cate'], "text"),
+                       GetSQLValueString($des_cate, "text"),
                        GetSQLValueString($_POST['catep'], "int"),
+                       GetSQLValueString($_POST['orden'], "int"),
                        GetSQLValueString($_POST['status'], "int"),
                        GetSQLValueString($_POST['id'], "int"));
                        

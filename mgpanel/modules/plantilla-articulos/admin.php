@@ -140,7 +140,7 @@ $totalRows_articulos = mysql_num_rows($articulos);
             $(function() {
                 $("#example1").dataTable();
                 $('#example2').dataTable({
-                    "bPaginate": true,
+                     "bPaginate": true,
                     "bLengthChange": true,
                     "bFilter": true,
                     "bSort": false,

@@ -2,7 +2,7 @@
 
 require_once('../inc/conexion_modules.inc.php'); 
 
-$updateSQL = sprintf("UPDATE sis_config SET title_site=%s, meta_des=%s, meta_clave=%s, id_google=%s, fuente_google=%s, tipof_google=%s, tienda=%s, catalogo=%s, simbolo_moneda=%s, impuesto=%s, envios=%s, email=%s, website=%s, ruta=%s, dato_factura=%s WHERE id_config=%s",  
+$updateSQL = sprintf("UPDATE sis_config SET title_site=%s, meta_des=%s, meta_clave=%s, id_google=%s, fuente_google=%s, tipof_google=%s, tienda=%s, catalogo=%s, simbolo_moneda=%s, impuesto=%s, envios=%s, email=%s, website=%s WHERE id_config=%s",  
 							 
 GetSQLValueString($_POST['title_site'], "text"),
 GetSQLValueString($_POST['meta_des'], "text"),
@@ -17,8 +17,6 @@ GetSQLValueString($_POST['impuesto'], "double"),
 GetSQLValueString($_POST['envios'], "int"),
 GetSQLValueString($_POST['email'], "text"),
 GetSQLValueString($_POST['website'], "text"),
-GetSQLValueString($_POST['ruta'], "text"),
-GetSQLValueString($_POST['dato_factura'], "text"),
 GetSQLValueString($_POST['id_config'], "int"));
                        
   mysql_select_db($database_sistemai, $sistemai);

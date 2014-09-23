@@ -40,7 +40,7 @@ $totalRows_menu = mysql_num_rows($menu);
     <small class="btn btn-success btn-lg" style="position:absolute; right:10px;top:10px;"><a href="index.php?mod=nuevo-menu" style="color:#fff;"><i class="glyphicon glyphicon-plus"></i><span> Nuevo Link</span></a></small>                                   
    </div><!-- /.box-header -->
   <div class="box-body table-responsive">
-  <table id="example2" class="table table-bordered table-striped">
+  <table id="example1" class="table table-bordered table-striped">
 
 
   	<thead>
@@ -112,11 +112,11 @@ $totalRows_menu = mysql_num_rows($menu);
                 $("#example1").dataTable();
                 $('#example2').dataTable({
                     "bPaginate": true,
-                    "bLengthChange": true,
-                    "bFilter": true,
-                    "bSort": false,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
                     "bInfo": true,
-                    "bAutoWidth": true,
+                    "bAutoWidth": false,
                     
                 });
 

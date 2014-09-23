@@ -40,6 +40,7 @@ $(document).ready(function() {
 
 $(function(){
  $("#grabar").click(function(){
+ 	$('#grabar').hide();
 
  	if (tinyMCE) tinyMCE.triggerSave(); 
 	if (captchaform.contenido.value==''){
@@ -50,6 +51,7 @@ $(function(){
  	if($("#titulo_articulo").val().length < 3) {  
         $('#msgerror').show();
         $("#msgerror p").html("<strong>Error!</strong> El Articulo debe tener un Titulo").show();
+        $('#grabar').show();
       
 
         return false;  
@@ -58,6 +60,7 @@ $(function(){
     if($("#alias").val().length < 2) {  
         $('#msgerror').show();
         $("#msgerror p").html("<strong>Error!</strong> Debes tener un Alias tu Articulo").show();
+        $('#grabar').show();
       
 
         return false;  
@@ -183,12 +186,12 @@ $(function(){
 
 
 		<tr><td>&nbsp;</td></tr>
-		<tr>
-	
-		<td colspan="2" align="center"><a href="index.php?mod=gestor-blog" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-remove"></i><span> Cancelar</span></a>	&nbsp;&nbsp;&nbsp;	 <a href="#" id="grabar" class="btn btn-primary btn-lg"><i class="fa fa-th-large"></i><span> Modificar</span></a></td>
-		</tr>
+		 
+		 
  		</table>
-
+		<div class="boton-modulo">
+		 	<a href="index.php?mod=gestor-blog" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-remove"></i><span> Cancelar</span></a>	&nbsp;&nbsp;&nbsp;	 <a href="#" id="grabar" class="btn btn-primary btn-lg"><i class="fa fa-th-large"></i><span> Modificar</span></a></td>
+		</div>
     
       <input type="hidden" name="id_articulo" id="id_articulo" value="<?php echo $row_modulos['id_articulo'];?>">
       <input type="hidden" name="status" id="status" value="1">

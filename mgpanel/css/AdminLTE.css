@@ -3540,6 +3540,11 @@ width: 100%;
 
 /* ESTYLOS VARIOS */
 
+.boton-modulo{
+position: absolute;
+top:10px;
+right: 10px;
+}
 .form-control.fm{
 
   width: 300px;
@@ -3589,3 +3594,41 @@ text-shadow: 0 0 4px #000;
 
 
 }
+
+/**** estilos de formulario factura ****/
+
+.custom-combobox {
+    position: relative;
+    display: inline-block;
+
+ 
+  }
+  .custom-combobox-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    padding: 0;
+  }
+  .custom-combobox-input {
+    margin: 0;
+    padding: 5px 10px;
+    width: 450px;
+  }
+  .ui-menu-item{
+    list-style: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+.ui-autocomplete{
+  box-shadow: rgb(82, 82, 82) 0px 0px 5px;
+width: 600px !important;
+background: #FFFEF2;
+}
+
+.ui-helper-hidden-accessible{
+  display: none;
+}
+
+/**** fin estilos formulario factura *****/

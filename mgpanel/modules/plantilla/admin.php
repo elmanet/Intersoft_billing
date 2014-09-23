@@ -49,7 +49,7 @@ $totalRows_modulo = mysql_num_rows($modulo);
     <small class="btn btn-success btn-lg" style="position:absolute; right:10px;top:10px;"><a href="index.php?mod=nuevo-modulo" style="color:#fff;"><i class="glyphicon glyphicon-plus"></i><span> Nuevo Módulo</span></a></small>                                   
    </div><!-- /.box-header -->
   <div class="box-body table-responsive">
-    <table id="example2" class="table table-bordered table-striped">
+    <table id="example1" class="table table-bordered table-striped">
 
 		<thead>
         <tr >
@@ -120,11 +120,11 @@ $totalRows_modulo = mysql_num_rows($modulo);
                 $("#example1").dataTable();
                 $('#example2').dataTable({
                     "bPaginate": true,
-                    "bLengthChange": true,
-                    "bFilter": true,
-                    "bSort": false,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
                     "bInfo": true,
-                    "bAutoWidth": true,
+                    "bAutoWidth": false,
                     
                 });
 

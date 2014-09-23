@@ -249,25 +249,6 @@ $(function(){
 			<input type="radio" name="envios" value="1" >Si
          <input type="radio" name="envios" value="0" checked>No
          <?php }?>
-     </td>
- </tr>
- 		<tr>
-			<td>
-			<div class="input-group">
-			<span class="input-group-addon"><i><strong class="fa fa-th-large"></strong></i></span>		
-			<input class="form-control fm" type="text" id="ruta" placeholder="Logo" name="ruta" value="<?php echo $row_modulos['ruta'];?>" style="width:300px;" />
-			</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-			<div class="input-group">
-			<span class="input-group-addon"><i><strong class="fa fa-th-large"></strong></i></span>		
-			<textarea  class="form-control fm" COLS=50 ROWS=3  id="dato_factura" name="dato_factura" placeholder="Datos de la Empresa (Factura)"><?php echo $row_modulos['dato_factura'];?></textarea>
-			</div>
-			</td>
-		</tr>
-
 		<tr><td>&nbsp;</td></tr>
 		</table>
 	

@@ -2,7 +2,7 @@
 
 
 mysql_select_db($database_sistemai, $sistemai);
-$query_producto = "SELECT a.id, a.cod_prod, a.nombre_prod, b.nombre_cate, a.precio, a.margen, a.existencia, a.descuento, a.destacado, a.status, a.ruta  FROM sis_productos a, sis_productos_categoria b WHERE a.id_cate=b.id  ORDER BY a.modificado DESC";
+$query_producto = "SELECT a.id, a.cod_prod, a.nombre_prod, b.nombre_cate, a.precio, a.descuento, a.destacado, a.status, a.ruta  FROM sis_productos a, sis_productos_categoria b WHERE a.id_cate=b.id  ORDER BY a.modificado DESC";
 $producto = mysql_query($query_producto, $sistemai) or die(mysql_error());
 $row_producto = mysql_fetch_assoc($producto);
 $totalRows_producto = mysql_num_rows($producto);
@@ -58,9 +58,6 @@ $totalRows_producto = mysql_num_rows($producto);
  				    <th><b>Imagen</b></th>
             <th><b>Descripci&oacute;n del Producto</b></th>
 				    <th><b>Categor&iacute;a</b></th>
-            <th><b>Cant</b></th>
-            <th><b>%</b></th>
-            <th><b>Precio Costo</b></th>
             <th><b>Precio sin Impuesto</b></th>
             <th><b>Fotos</b></th>
             <th><b>Destacado</b></th>
@@ -83,11 +80,8 @@ $totalRows_producto = mysql_num_rows($producto);
               </td>
               <td  height="26" align="center" ><?php echo strtoupper($row_producto['nombre_prod']); ?></td>
 				  <td align="center" ><?php echo $row_producto['nombre_cate']; ?></td>
-          <td align="center" ><?php echo $row_producto['existencia']; ?></td>
-          <td align="center" ><?php if($row_producto['margen']>0){echo $row_producto['margen']."%";} else{ echo "<center>-</center>"; } ?></td>
-              <td align="center" ><?php echo $row_config['simbolo_moneda'].$row_producto['precio']; ?></td>
               <td  align="center" >
-              	<?php if($row_producto['descuento']>0) {$preciot=(($row_producto['precio']*$row_producto['margen'])/100)+$row_producto['precio'];  echo "<strike>".$row_config['simbolo_moneda'].round($preciot,2)."</strike><br>".$row_config['simbolo_moneda'].$row_producto['descuento']; } else { if($row_producto['margen']>0) { $preciot=(($row_producto['precio']*$row_producto['margen'])/100)+$row_producto['precio']; echo $row_config['simbolo_moneda'].round($preciot,2); } else { echo $row_config['simbolo_moneda'].$row_producto['precio']; } }?></td>
+              	<?php if($row_producto['descuento']>0) { echo "<strike>".$row_producto['precio'].$row_config['simbolo_moneda']."</strike><br>".$row_producto['descuento'].$row_config['simbolo_moneda']; } else { echo $row_producto['precio'].$row_config['simbolo_moneda']; } ?></td>
               <td  align="center" >
               <a href="#" onclick="cargar('#divtest', 'modules/productos/fotos.php?id=<?php echo $row_producto['id'];?>')"  ><span class="glyphicon glyphicon-camera" style="font-size:2em;"></span></a></td>
               <td  align="center" >
@@ -148,7 +142,7 @@ $totalRows_producto = mysql_num_rows($producto);
             $(function() {
                 $("#example1").dataTable();
                 $('#example2').dataTable({
-                    "bPaginate": true,
+                    "bPaginate": false,
                     "bLengthChange": true,
                     "bFilter": true,
                     "bSort": false,
@@ -159,6 +153,7 @@ $totalRows_producto = mysql_num_rows($producto);
 
             });
         </script>
+    
         <?php /* FUNCION PREGUNTAR ANTES */ ?>         
     <script type="text/javascript" src="js/jconfirmaction.jquery.js"></script>
         <script type="text/javascript">

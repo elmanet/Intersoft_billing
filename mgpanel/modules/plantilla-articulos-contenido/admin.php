@@ -52,7 +52,7 @@ $totalRows_articulos = mysql_num_rows($articulos);
     
    </div><!-- /.box-header -->
   <div class="box-body table-responsive">
-    <table id="example2" class="table table-bordered table-striped">
+    <table id="example1" class="table table-bordered table-striped">
 				
         <thead>
               <tr >
@@ -142,11 +142,11 @@ $totalRows_articulos = mysql_num_rows($articulos);
                 $("#example1").dataTable();
                 $('#example2').dataTable({
                     "bPaginate": true,
-                    "bLengthChange": true,
-                    "bFilter": true,
-                    "bSort": false,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
                     "bInfo": true,
-                    "bAutoWidth": true,
+                    "bAutoWidth": false,
                     
                 });
 

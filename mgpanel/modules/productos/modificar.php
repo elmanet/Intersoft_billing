@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
   $colname_productos = $_GET['id'];
 }
 mysql_select_db($database_sistemai, $sistemai);
-$query_productos = sprintf("SELECT a.id, a.cod_prod, a.nombre_prod, a.id_cate, a.id_marca,  a.des_prod_corto, a.des_prod, a.existencia, a.precio, a.margen,  a.descuento, a.destacado, a.clave, a.ruta, a.status, b.nombre_cate, c.nombre_marca FROM sis_productos a, sis_productos_categoria b, sis_productos_fabricantes c WHERE a.id_cate=b.id AND a.id_marca=c.id AND a.id=%s", GetSQLValueString($colname_productos, "int"));
+$query_productos = sprintf("SELECT a.id, a.cod_prod, a.nombre_prod, a.id_cate, a.id_marca,  a.des_prod_corto, a.des_prod, a.existencia, a.precio, a.descuento, a.destacado, a.clave, a.ruta, a.status, b.nombre_cate, c.nombre_marca FROM sis_productos a, sis_productos_categoria b, sis_productos_fabricantes c WHERE a.id_cate=b.id AND a.id_marca=c.id AND a.id=%s", GetSQLValueString($colname_productos, "int"));
 $productos = mysql_query($query_productos, $sistemai) or die(mysql_error());
 $row_productos = mysql_fetch_assoc($productos);
 $totalRows_productos = mysql_num_rows($productos);
@@ -32,23 +32,7 @@ $totalRows_marca = mysql_num_rows($marca);
 <head>
 <meta http-equiv="Content-type" content="text/html; utf-8" />
 <link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
-      <script src="js/plugins/ckeditor/ckeditor.js"></script>
-      <script src="js/plugins/ckeditor/config.js"></script>
-       
-
-		<script type="text/javascript">
-            $(function() {
-            	 CKEDITOR.replace('des_prod1',{
-            	 	    filebrowserBrowseUrl : 'modules/file/ft2.php',
-            	 		uiColor: '#c3c3c3',
-						allowedContent: true
-						
-            	 		
-            	 	});
-            	
-            });
-
-        </script>
+<?php require_once('modules/inc/editor.inc.php'); ?>
 
 <script> 
 $(document).ready(function() {
@@ -64,7 +48,7 @@ $(document).ready(function() {
 $(function(){
  $("#grabar").click(function(){
 
- 	CKEDITOR.instances['des_prod1'].updateElement();
+ 	if (tinyMCE) tinyMCE.triggerSave(); 
  	
  	if($("#cod_prod").val().length < 2) {  
         $('#msgerror').show();
@@ -250,16 +234,6 @@ $(function(){
 			<td>
 			<div class="input-group">
 			<span class="input-group-addon"><i><strong class="fa fa-th-large"></strong></i></span>		
-			<input class="form-control fm" type="text" id="margen" placeholder="%" name="margen" value="<?php echo $row_productos['margen'];?>" style="width:100px;" />
-			<small> Margen Ganancia</small>
-			</div>
-			</td>
-		</tr>
-
-		<tr>
-			<td>
-			<div class="input-group">
-			<span class="input-group-addon"><i><strong class="fa fa-th-large"></strong></i></span>		
 			<input class="form-control fm" type="text" id="descuento" placeholder="$" name="descuento" value="<?php echo $row_productos['descuento'];?>" style="width:100px;" />
 			<small> Precio Descuento</small>
 			</div>
@@ -281,24 +255,24 @@ $(function(){
 	<table>
 	<tr>
 			<td>
-			<div class="input-group" id="coneditor">
-			  <textarea  name="des_prod1" id="des_prod1" placeholder="Descripción larga del Producto" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+			<div class="input-group" id="coneditor" style="width: 100%;">
+			  <textarea  name="contenido" id="contenido" placeholder="Descripción larga del Producto" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
 			  		<?php echo $row_productos['des_prod'];?>	
 			  </textarea> 
 			</div>
+			
 			</td>
 		</tr>
 
 		
 
 		<tr><td>&nbsp;</td></tr>
-		<tr>
-	
-		<td colspan="2" align="center"><a href="index.php?mod=gestor-productos" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-remove"></i><span> Cancelar</span></a>	&nbsp;&nbsp;&nbsp;	 <a href="#" id="grabar" class="btn btn-primary btn-lg"><i class="fa fa-th-large"></i><span> Modificar</span></a></td>
-		</tr>
+		
  		</table>
 
-    
+    	<div class="boton-modulo">
+			<a href="index.php?mod=gestor-productos" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-remove"></i><span> Cancelar</span></a>	&nbsp;&nbsp;&nbsp;	 <a href="#" id="grabar" class="btn btn-primary btn-lg"><i class="fa fa-th-large"></i><span> Modificar</span></a>
+		</div>
       <input type="hidden" name="id" id="id" value="<?php echo $row_productos['id'];?>">
       <input type="hidden" name="status" id="status" value="<?php echo $row_productos['status'];?>">
       <input type="hidden" name="destacado" id="destacado" value="<?php echo $row_productos['destacado'];?>">
@@ -317,5 +291,6 @@ $(function(){
 				
 		</center>
 
+     
 		</body>
 		</html>
