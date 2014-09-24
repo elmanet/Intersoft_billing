@@ -370,7 +370,7 @@ $(function() {
 <center>
 <br>
 
-<div id="msgerror" class="alert alert-warning alert-dismissable" style="position:absolute;z-index:10 !important;right:5px;top: 144px;">
+<div id="msgerror" class="alert alert-warning alert-dismissable" style="position:absolute;z-index:10 !important;right:5px;top: 85px;">
    <i class="fa fa-warning"></i><p></p></div>
 <!-- FORMULARIO REGISTRO  -->
 <div class="box box-warning" id="wtop">

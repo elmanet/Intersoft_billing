@@ -27,7 +27,7 @@ $row_productost = mysql_fetch_assoc($productost);
 $totalRows_productost = mysql_num_rows($productost);
 
 mysql_select_db($database_sistemai, $sistemai);
-$query_factura = sprintf("SELECT * FROM sis_factura");
+$query_factura = sprintf("SELECT * FROM sis_factura WHERE eliminada=0");
 $factura = mysql_query($query_factura, $sistemai) or die(mysql_error());
 $row_factura = mysql_fetch_assoc($factura);
 $totalRows_factura = mysql_num_rows($factura);
