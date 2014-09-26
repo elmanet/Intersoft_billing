@@ -85,7 +85,11 @@ $totalRows_producto = mysql_num_rows($producto);
 				  <td align="center" ><?php echo $row_producto['nombre_cate']; ?></td>
           <td align="center" ><?php echo $row_producto['existencia']; ?></td>
           <td align="center" ><?php if($row_producto['margen']>0){echo $row_producto['margen']."%";} else{ echo "<center>-</center>"; } ?></td>
-              <td align="center" ><?php echo $row_config['simbolo_moneda'].$row_producto['precio']; ?></td>
+              <td align="center" >
+                <?php echo $row_config['simbolo_moneda'].$row_producto['precio']; ?><br>
+                <?php $totalcosto=$row_producto['precio']*$row_producto['existencia'];?>
+                <small><?php echo $row_config['simbolo_moneda'].$totalcosto; ?></small>
+              </td>
               <td  align="center" >
               	<?php if($row_producto['descuento']>0) {$preciot=(($row_producto['precio']*$row_producto['margen'])/100)+$row_producto['precio'];  echo "<strike>".$row_config['simbolo_moneda'].round($preciot,2)."</strike><br>".$row_config['simbolo_moneda'].$row_producto['descuento']; } else { if($row_producto['margen']>0) { $preciot=(($row_producto['precio']*$row_producto['margen'])/100)+$row_producto['precio']; echo $row_config['simbolo_moneda'].round($preciot,2); } else { echo $row_config['simbolo_moneda'].$row_producto['precio']; } }?></td>
               <td  align="center" >

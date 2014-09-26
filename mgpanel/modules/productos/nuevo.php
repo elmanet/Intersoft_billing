@@ -17,7 +17,7 @@ $totalRows_marca = mysql_num_rows($marca);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-type" content="text/html; utf-8" />
-
+<?php require_once('modules/inc/editor.inc.php'); ?>
 
 <style>
 
@@ -26,7 +26,7 @@ $totalRows_marca = mysql_num_rows($marca);
 #percent { position:absolute; display:inline-block; top:3px; left:48%; }
 </style>
 
-<?php require_once('modules/inc/editor.inc.php'); ?>
+
 
 <script src="js/jquery.form.js"></script> 
  
@@ -153,7 +153,7 @@ $totalRows_marca = mysql_num_rows($marca);
 <center>
 <br>
 
-<div id="msgerror" class="alert alert-warning alert-dismissable" style="position:absolute;z-index:10 !important;right:5px;top: 80px;">
+<div id="msgerror" class="alert alert-warning alert-dismissable" style="position:absolute;z-index:10 !important;right:5px;top: 144px;">
    <i class="fa fa-warning"></i><p></p></div>
 <!-- FORMULARIO REGISTRO  -->
 <div class="box box-warning" id="wtop">
@@ -238,9 +238,9 @@ $totalRows_marca = mysql_num_rows($marca);
 		<tr>
 			<td>
 			<div class="input-group">
-			<span class="input-group-addon"><i><strong class="fa fa-th-large"></strong></i></span>		
+			<span class="input-group-addon"><strong>Existencia en Inventario</strong></span>		
 			<input class="form-control fm" type="text" id="existencia" placeholder="Cant" name="existencia" value="" style="width:100px;" />
-			<small> Existencia en Inventario</small>
+			
 			</div>
 			</td>
 		</tr>
@@ -248,9 +248,8 @@ $totalRows_marca = mysql_num_rows($marca);
 		<tr>
 			<td>
 			<div class="input-group">
-			<span class="input-group-addon"><i><strong class="fa fa-th-large"></strong></i></span>		
+			<span class="input-group-addon"><strong>Precio sin impuesto</strong></span>		
 			<input class="form-control fm" type="text" id="precio" placeholder="$" name="precio" value="" style="width:100px;" />
-			<small> Precio sin impuesto</small>
 			</div>
 			</td>
 		</tr>
@@ -258,9 +257,17 @@ $totalRows_marca = mysql_num_rows($marca);
 		<tr>
 			<td>
 			<div class="input-group">
-			<span class="input-group-addon"><i><strong class="fa fa-th-large"></strong></i></span>		
+			<span class="input-group-addon"><strong>Margen Ganancia</strong></span>		
+			<input class="form-control fm" type="text" id="margen" placeholder="%" name="margen" value="" style="width:100px;" />
+			</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+			<div class="input-group">
+			<span class="input-group-addon"><strong>Precio Descuento</strong></span>		
 			<input class="form-control fm" type="text" id="descuento" placeholder="$" name="descuento" value="" style="width:100px;" />
-			<small> Precio Descuento</small>
 			</div>
 			</td>
 		</tr>
@@ -286,7 +293,6 @@ $totalRows_marca = mysql_num_rows($marca);
 
 <div class="box-formulario2">
 	<table>
-
 		<tr>
 			<td>
 			<div class="input-group" id="coneditor" style="width: 100%;">
@@ -294,8 +300,8 @@ $totalRows_marca = mysql_num_rows($marca);
              </div>
 			</td>
 		</tr>
-		
 
+		
 		<tr><td>&nbsp;</td></tr>
 		
 
@@ -305,7 +311,7 @@ $totalRows_marca = mysql_num_rows($marca);
     	<div class="boton-modulo">
 			<a href="index.php?mod=gestor-productos" class="btn btn-danger btn-lg"><i class="glyphicon glyphicon-remove"></i><span> Cancelar</span></a>	&nbsp;&nbsp;&nbsp;	 <input type="submit" id="grabar" class="btn btn-primary btn-lg " value="Grabar Nuevo" />
 		</div>
-
+    
        <input type="hidden" name="id" id="id" value="">
        <input type="hidden" name="status" id="status" value="1">
        <input type="hidden" name="destacado" id="destacado" value="0">

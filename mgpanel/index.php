@@ -692,6 +692,9 @@ if ($_GET['mod']=="nueva-factura") {
 if ($_GET['mod']=="gestor-factura") { 
     require_once('modules/facturacion/gestor-factura.php');
 }
+if ($_GET['mod']=="facturas-eliminadas") { 
+    require_once('modules/facturacion/facturas-eliminadas.php');
+}
 
 /*FIN DE GESTOR DE PRODUCTOS*/?>
 

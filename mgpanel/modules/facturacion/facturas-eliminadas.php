@@ -2,7 +2,7 @@
 
 
 mysql_select_db($database_sistemai, $sistemai);
-$query_producto = "SELECT * FROM sis_factura a, sis_users b WHERE a.id_cliente=b.id_usuario AND a.eliminada=0 ORDER BY a.creado DESC";
+$query_producto = "SELECT * FROM sis_factura a, sis_users b WHERE a.id_cliente=b.id_usuario AND a.eliminada=1 ORDER BY a.creado DESC";
 $producto = mysql_query($query_producto, $sistemai) or die(mysql_error());
 $row_producto = mysql_fetch_assoc($producto);
 $totalRows_producto = mysql_num_rows($producto);
@@ -47,7 +47,7 @@ $totalRows_producto = mysql_num_rows($producto);
 <div class="box">
    <div class="box-header">
     <h3 class="box-title">GESTOR DE FACTURAS</h3> 
-    <small class="btn btn-danger btn-lg" style="position:absolute; right:185px;top:10px;"><a href="index.php?mod=facturas-eliminadas" style="color:#fff;"><i class="glyphicon glyphicon-trash"></i><span> Facturas Eliminadas</span></a></small>                                   
+    <small class="btn btn-primary btn-lg" style="position:absolute; right:185px;top:10px;"><a href="index.php?mod=gestor-factura" style="color:#fff;"><i class="glyphicon glyphicon-print"></i><span> Reporte de Facturas</span></a></small>                                   
     <small class="btn btn-success btn-lg" style="position:absolute; right:10px;top:10px;"><a href="index.php?mod=nueva-factura&p=6" style="color:#fff;"><i class="glyphicon glyphicon-plus"></i><span> Nueva Factura</span></a></small>                                   
    </div><!-- /.box-header -->
   <div class="box-body table-responsive">
@@ -60,7 +60,7 @@ $totalRows_producto = mysql_num_rows($producto);
             <th><b>Cliente</b></th>
             <th><b>Observacion</b></th>
 				    <th><b>Detalle</b></th>
-            <th><b>&nbsp;</b></th>
+        
             <?php /*
             <th><b>Opciones</b></th>
             */?>
@@ -74,7 +74,7 @@ $totalRows_producto = mysql_num_rows($producto);
               <td align="center" ><?php echo $row_producto['nombre_usuario']." ".$row_producto['apellido_usuario']; ?></td>
               <td align="center" ><?php echo $row_producto['observaciones']; ?></td>
               <td  align="center" ><a href="#" onclick="cargar('#divtest', 'modules/facturacion/factura-detalle.php?id=<?php echo $row_producto['id_factura'];?>')"  ><span class="glyphicon glyphicon-align-justify" style="font-size:2em;"></span></a></td>
-               <td  align="center" ><a href="javascript:cargar('#divtest', 'modules/facturacion/eliminar-factura.php?id=<?php echo $row_producto['id_factura'];?>')"  class="ask-custom"><span class="glyphicon glyphicon-trash" style="font-size:2em;"></span></a></td> 
+             
 
              <?php /*
              <td  align="center" ><a href="index.php?mod=modificar-producto&id=<?php echo $row_producto['id'];?>"><span class="glyphicon glyphicon-pencil" style="font-size:2em;"></span></a>&nbsp;<a href="javascript:cargar('#divtest', 'modules/productos/eliminar.php?id=<?php echo $row_producto['id'];?>&ruta=<?php echo '../../../imagesmg/'.$row_producto['ruta'];?>')"  class="ask-custom"><span class="glyphicon glyphicon-trash" style="font-size:2em;"></span></a></td> 

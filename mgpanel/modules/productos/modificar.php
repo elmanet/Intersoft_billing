@@ -8,7 +8,7 @@ if (isset($_GET['id'])) {
   $colname_productos = $_GET['id'];
 }
 mysql_select_db($database_sistemai, $sistemai);
-$query_productos = sprintf("SELECT a.id, a.cod_prod, a.nombre_prod, a.id_cate, a.id_marca,  a.des_prod_corto, a.des_prod, a.existencia, a.precio, a.descuento, a.destacado, a.clave, a.ruta, a.status, b.nombre_cate, c.nombre_marca FROM sis_productos a, sis_productos_categoria b, sis_productos_fabricantes c WHERE a.id_cate=b.id AND a.id_marca=c.id AND a.id=%s", GetSQLValueString($colname_productos, "int"));
+$query_productos = sprintf("SELECT a.id, a.cod_prod, a.nombre_prod, a.id_cate, a.id_marca,  a.des_prod_corto, a.des_prod, a.existencia, a.precio, a.margen,  a.descuento, a.destacado, a.clave, a.ruta, a.status, b.nombre_cate, c.nombre_marca FROM sis_productos a, sis_productos_categoria b, sis_productos_fabricantes c WHERE a.id_cate=b.id AND a.id_marca=c.id AND a.id=%s", GetSQLValueString($colname_productos, "int"));
 $productos = mysql_query($query_productos, $sistemai) or die(mysql_error());
 $row_productos = mysql_fetch_assoc($productos);
 $totalRows_productos = mysql_num_rows($productos);
@@ -33,7 +33,7 @@ $totalRows_marca = mysql_num_rows($marca);
 <meta http-equiv="Content-type" content="text/html; utf-8" />
 <link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
 <?php require_once('modules/inc/editor.inc.php'); ?>
-
+     
 <script> 
 $(document).ready(function() {
  	$("#sineditor").hide();
@@ -213,9 +213,9 @@ $(function(){
 		<tr>
 			<td>
 			<div class="input-group">
-			<span class="input-group-addon"><i><strong class="fa fa-th-large"></strong></i></span>		
+			<span class="input-group-addon"><strong>Existencia en Inventario</strong></span>		
 			<input class="form-control fm" type="text" id="existencia" placeholder="Cant" name="existencia" value="<?php echo $row_productos['existencia'];?>" style="width:100px;" />
-			<small> Existencia en Inventario</small>
+			<small> </small>
 			</div>
 			</td>
 		</tr>
@@ -223,9 +223,9 @@ $(function(){
 		<tr>
 			<td>
 			<div class="input-group">
-			<span class="input-group-addon"><i><strong class="fa fa-th-large"></strong></i></span>		
+			<span class="input-group-addon"><strong>Precio sin impuesto</strong></span>		
 			<input class="form-control fm" type="text" id="precio" placeholder="$" name="precio" value="<?php echo $row_productos['precio'];?>" style="width:100px;" />
-			<small> Precio sin impuesto</small>
+			<small> </small>
 			</div>
 			</td>
 		</tr>
@@ -233,9 +233,17 @@ $(function(){
 		<tr>
 			<td>
 			<div class="input-group">
-			<span class="input-group-addon"><i><strong class="fa fa-th-large"></strong></i></span>		
+			<span class="input-group-addon"><strong> Margen Ganancia</strong></span>		
+			<input class="form-control fm" type="text" id="margen" placeholder="%" name="margen" value="<?php echo $row_productos['margen'];?>" style="width:100px;" />
+			</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+			<div class="input-group">
+			<span class="input-group-addon"><strong>Precio Descuento</strong></span>		
 			<input class="form-control fm" type="text" id="descuento" placeholder="$" name="descuento" value="<?php echo $row_productos['descuento'];?>" style="width:100px;" />
-			<small> Precio Descuento</small>
 			</div>
 			</td>
 		</tr>
@@ -291,6 +299,5 @@ $(function(){
 				
 		</center>
 
-     
 		</body>
 		</html>
